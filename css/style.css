@@ -1,0 +1,366 @@
+/* ===== デザイン基盤（Figmaの変数と同じ名前・値） ===== */
+:root {
+  /* 面 */
+  --bg-ground: #EFF4F2;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #E4EBE8;
+  --bg-primary-soft: #EAF0F5;
+  --bg-warn: #FBEBCF;
+  --bg-warn-soft: #FFF8EC;
+
+  /* 文字 */
+  --text-default: #1A1E23;
+  --text-muted: #4F5864;
+  --text-on-primary: #FFFFFF;
+  --text-on-primary-muted: #C9D4E2;
+  --text-warn: #5C3A00;
+
+  /* 線 */
+  --border-default: #D3DCD8;
+  --border-strong: #BCC7C2;
+  --border-connector: #9AA1A8;
+
+  /* ブランド・状態 */
+  --brand-primary: #1F3A5F;   /* 紺の色味は後で確定 */
+  --brand-accent: #E8D6A7;    /* ロゴ・装飾のみ */
+  --status-warn: #B0730F;
+  --status-warn-strong: #5C3A00;
+  --status-done: #2F6B5B;     /* 受領印・完了 */
+  --status-neutral: #5B6470;
+
+  /* 文字の種類と大きさ */
+  --font-body: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --size-title: 24px;
+  --size-heading: 21px;
+  --size-card-title: 17px;
+  --size-body: 15px;
+  --size-small: 13px;
+  --size-badge: 11px;
+}
+
+/* ===== 全体の基本 ===== */
+body {
+  margin: 0;
+  background: var(--bg-ground);
+  color: var(--text-default);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: 1.7;
+}
+
+.app-header {
+  background: var(--brand-primary);
+  color: var(--text-on-primary);
+  padding: 12px 24px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: var(--size-card-title);
+}
+
+main {
+  padding: 24px;
+}
+
+/* ===== 部品 ===== */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+
+/* ===== ヘッダーの役割切り替え ===== */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.role-switch {
+  font-size: var(--size-small);
+}
+
+.role-switch select {
+  font: inherit;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* ===== 案件カード ===== */
+.case-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  max-width: 480px;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  font-size: var(--size-badge);
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+}
+
+.badge-level {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--text-on-primary);
+}
+
+.case-title {
+  margin: 0;
+  font-size: var(--size-card-title);
+  line-height: 1.45;
+}
+
+.meta {
+  margin: 0;
+  font-size: var(--size-small);
+  color: var(--text-muted);
+}
+
+
+/* ===== 案件の詳細とボタン ===== */
+.case-card[onclick] {
+  cursor: pointer;
+}
+
+.body {
+  margin: 0;
+  line-height: 1.85;
+}
+
+.btn-primary {
+  font: inherit;
+  font-weight: 700;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--brand-primary);
+  color: var(--text-on-primary);
+  cursor: pointer;
+}
+
+.btn-back {
+  font: inherit;
+  font-size: var(--size-small);
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  color: var(--brand-primary);
+  cursor: pointer;
+}
+
+.done {
+  margin: 0;
+  font-weight: 700;
+  color: var(--status-done);
+}
+
+
+/* ===== 転送欄 ===== */
+.forward {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-default);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-default);
+  border-radius: 10px;
+}
+
+
+/* ===== 管理者画面：伝達ツリー ===== */
+.tree,
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.tree ul {
+  margin-left: 12px;
+  padding-left: 20px;
+  border-left: 2px solid var(--border-connector);
+}
+
+.tree li {
+  margin: 8px 0;
+}
+
+.node {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+}
+
+.node-missing {
+  border: 2px dashed var(--status-warn);
+  background: var(--bg-warn-soft);
+}
+
+/* ===== 要確認の通知 ===== */
+.alert {
+  max-width: 480px;
+  margin-bottom: 12px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 2px solid var(--status-warn);
+  border-radius: 14px;
+}
+
+.alert p {
+  margin: 4px 0;
+}
+
+.alert-title {
+  font-weight: 700;
+  color: var(--text-warn);
+}
+
+
+/* ===== 表示の切り替えボタン ===== */
+.toggle {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 3px;
+  background: var(--bg-subtle);
+  border-radius: 10px;
+}
+
+.toggle button {
+  font: inherit;
+  font-size: var(--size-small);
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.toggle button.on {
+  background: var(--bg-surface);
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+/* ===== タイムライン ===== */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--border-default);
+}
+
+.tl-row {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0 8px 12px;
+}
+
+.tl-time {
+  min-width: 72px;
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  color: var(--text-muted);
+}
+
+.tag-warn {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: var(--size-badge);
+  font-weight: 700;
+  background: var(--status-warn-strong);
+  color: var(--text-on-primary);
+}
+
+
+/* ===== ヘッダーのボタン ===== */
+.header-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-reset {
+  font: inherit;
+  font-size: var(--size-small);
+  padding: 6px 12px;
+  border: 1px solid var(--text-on-primary-muted);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-on-primary);
+  cursor: pointer;
+}
+
+/* ===== 画面の幅：社員はスマホ枠、管理者はPC幅 ===== */
+#app.view-phone {
+  box-sizing: border-box;
+  max-width: 400px;
+  min-height: 640px;
+  margin: 24px auto;
+  padding: 16px;
+  border: 8px solid var(--text-default);
+  border-radius: 32px;
+}
+
+#app.view-admin {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ===== バッジの色分け ===== */
+.badge-warn {
+  background: var(--bg-warn);
+  border-color: var(--bg-warn);
+  color: var(--text-warn);
+}
+
+.badge-done {
+  border-color: var(--status-done);
+  color: var(--status-done);
+}
+
+.badge-missing {
+  background: var(--status-warn-strong);
+  border-color: var(--status-warn-strong);
+  color: var(--text-on-primary);
+}
